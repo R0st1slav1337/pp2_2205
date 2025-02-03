@@ -92,6 +92,13 @@ def average_imdb_score(movies):
     total_score = sum(movie.get('imdb', 0) for movie in movies) # calculate the total IMDB score of the movies
     return total_score / len(movies) # calculate the average IMDB score of the movies
 
+def average_imdb_score_by_category(movies, category):
+    category_movies = [movie for movie in movies if movie.get('category') == category] # get the list of movies with the specified category
+    if not category_movies: # check if the list of movies with the specified category is empty
+        return 0
+    total_score = sum(movie.get('imdb', 0) for movie in category_movies) # calculate the total IMDB score of the movies with the specified category
+    return total_score / len(category_movies) # calculate the average IMDB score of the movies with the specified category
+
 print(is_high_rated(movies[1])) # accessing the second movie in the list
 print(is_high_rated(movies[9])) # accessing the tenth movie in the list
 
@@ -105,3 +112,7 @@ for movie in filtered_movies:
 
 average_score = average_imdb_score(movies) # calculate the average IMDB score of the movies
 print(f"Average IMDB score of all movies is: {average_score:.1f}") # print the average IMDB score of the movies
+
+category_name = input("Enter the category to see average IMDB score of retaled movies: ") # get the category name from the user
+average_score = average_imdb_score_by_category(movies, category_name) # calculate the average IMDB score of the movies with the specified category
+print(f"Average IMDB score for {category_name} movies: {average_score:.1f}") # print the average IMDB score of the movies with the specified category
