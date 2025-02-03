@@ -80,6 +80,11 @@ movies = [
 def is_high_rated(movie):
     return movie.get('imdb', 0) > 5.5 # return True if the movie's rating is greater than 5.5, False otherwise
 
+def high_rated_movies(movies):
+    return [movie for movie in movies if movie.get('imdb', 0) > 5.5] # return a list of movies with a rating greater than 5.5
 
 print(is_high_rated(movies[1])) # accessing the second movie in the list
 print(is_high_rated(movies[9])) # accessing the tenth movie in the list
+
+print("High-rated movies with IMDB score more than 5.5:")
+print(high_rated_movies(movies)) # get the list of high-rated movies
