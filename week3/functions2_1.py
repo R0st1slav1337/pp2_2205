@@ -86,6 +86,12 @@ def high_rated_movies(movies):
 def movies_by_category(movies, category):
     return [movie for movie in movies if movie.get('category') == category] # return a list of movies with the specified category
 
+def average_imdb_score(movies):
+    if not movies: # check if the list of movies is empty
+        return 0
+    total_score = sum(movie.get('imdb', 0) for movie in movies) # calculate the total IMDB score of the movies
+    return total_score / len(movies) # calculate the average IMDB score of the movies
+
 print(is_high_rated(movies[1])) # accessing the second movie in the list
 print(is_high_rated(movies[9])) # accessing the tenth movie in the list
 
@@ -96,3 +102,6 @@ category_name = str(input("Enter the category to see related movies: ")) # get t
 filtered_movies = movies_by_category(movies, category_name) # get the list of movies with the specified category
 for movie in filtered_movies:
     print(f"Name: {movie['name']}, IMDB: {movie['imdb']}") # print the name and IMDB score of each movie with the specified category
+
+average_score = average_imdb_score(movies) # calculate the average IMDB score of the movies
+print(f"Average IMDB score of all movies is: {average_score:.1f}") # print the average IMDB score of the movies
