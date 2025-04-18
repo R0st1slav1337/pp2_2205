@@ -24,7 +24,7 @@ class Wall(GameObject):
         f.close()
 
     def next_level(self): # Move to the next level
-        self.level = (self.level + 1) % 3 # Cycle through levels 0, 1, and 2
+        self.level = (self.level + 1) % 5 # Cycle through levels 0, 1, 2, 3, 4
         if self.level > self.max_level:  # Loop back to level 1 after the last level
             self.level = 1
         self.points = [] # Clear the current wall points
