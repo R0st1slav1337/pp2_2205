@@ -6,7 +6,7 @@ class Wall(GameObject):
         # Initialize wall with an empty list of points and red color
         super().__init__([], (255, 0, 0), tile_width)
         self.level = 1 # Start at level 1
-        self.max_level = 3  # Set the maximum number of levels
+        self.max_level = 5  # Set the maximum number of levels
         self.load_level() # Load the initial level
 
     def load_level(self): # Load the wall level from a file
